@@ -35,7 +35,7 @@ switch(req.method){
     });
     req.on('end', function(){
       var cleanUrl = JSON.parse(rawUrl);
-      archive.addUrlToList(cleanUrl.url);
+      // archive.addUrlToList(cleanUrl.url);
       res.writeHead(302, defaultCorsHeaders);
       res.end();
     });

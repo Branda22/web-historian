@@ -51,14 +51,21 @@ exports.isUrlInList = function(target, callback){
   });
 };
 
-exports.addUrlToList = function(data){
-  data = data + "\n";
-  fs.appendFile(exports.paths.list, data, function(err){
-    if(err){
-      console.log(err);
-      throw err;
-    }
-  });
+exports.addUrlToList = function(url, callback){
+  // exports.isUrlInList(url, function(isThere){
+  //   if(!isThere){
+      var data = url + "\n";
+      if(callback())
+      fs.appendFile(exports.paths.list, data, function(err){
+        if(err){
+          console.log(err);
+          throw err;
+        }
+        // callback();
+      });
+    // }
+  // });
+  callback();
 };
 
 exports.isUrlArchived = function(){
